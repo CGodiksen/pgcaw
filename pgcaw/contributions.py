@@ -2,6 +2,7 @@ import requests
 
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
+from operator import itemgetter
 
 
 class Contributions:
@@ -90,7 +91,7 @@ class Contributions:
             streaks.append((streak_counter, from_date, datetime.today().date()))
 
         # Return the longest streak, if any exist.
-        return streaks
+        return max(streaks, key=itemgetter(0))
 
 
 test = Contributions("cgodiksen")
