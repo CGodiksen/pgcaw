@@ -57,13 +57,20 @@ class Contributions:
 
         return streak_counter, from_date, to_date
 
-    def longest_streak(self):
+    def longest_streak(self, daily_contributions):
         """
         Return the length of the longest commit streak as well as the two dates specifying the period.
-        The output is a three-tuple with the format (streak_length, from, to).
+        The output is a three-tuple with the format (streak_length, from, to). If the user has never committed then
+        from and to will be None.
         """
+        # Remove all days without contributions.
+        active_days = list(filter(lambda day: day[1] > 0, daily_contributions))
+
+        # Iterate through remaining days to find all streaks of any length.
+
+        # Return the longest streak, if any exist.
 
 
 test = Contributions("cgodiksen")
 daily = test.daily_contributions()
-print(test.current_streak(daily))
+print(test.longest_streak(daily))
