@@ -30,6 +30,18 @@ class Contributions:
 
         return list(zip(dates, number_contributions))
 
+    def current_streak(self):
+        """
+        Return the length of the current commit streak as well as the two dates specifying the period.
+        The output is a three-tuple with the format (streak_length, from, to).
+        """
+
+    def longest_streak(self):
+        """
+        Return the length of the longest commit streak as well as the two dates specifying the period.
+        The output is a three-tuple with the format (streak_length, from, to).
+        """
+
 
 test = Contributions("cgodiksen")
 print(test.daily_contributions())
