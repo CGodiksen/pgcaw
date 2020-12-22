@@ -1,4 +1,6 @@
 import requests
+
+from datetime import datetime
 from bs4 import BeautifulSoup
 
 
@@ -21,7 +23,13 @@ class Contributions:
         Return a list of tuples, each with the format (date, number_contributions_on_date). The list has an element
         for each day in the last year.
         """
-        
+        days = self.contributions_soup.find_all("rect", class_="day")
+
+        dates = [datetime.strptime(day["data-date"], "%Y-%m-%d").date() for day in days]
+        number_contributions = [int(day["data-count"]) for day in days]
+
+        return list(zip(dates, number_contributions))
+
 
 test = Contributions("cgodiksen")
-print(test.total_contributions())
+print(test.daily_contributions())
