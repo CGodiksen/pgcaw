@@ -1,6 +1,6 @@
 import requests
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
 
@@ -30,11 +30,32 @@ class Contributions:
 
         return list(zip(dates, number_contributions))
 
-    def current_streak(self):
+    @staticmethod
+    def current_streak(daily_contributions):
         """
         Return the length of the current commit streak as well as the two dates specifying the period.
-        The output is a three-tuple with the format (streak_length, from, to).
+        The output is a three-tuple with the format (streak_length, from, to). If the user is not on a streak then
+        from and to will be None.
         """
+        list.reverse(daily_contributions)
+
+        to_date = None
+        from_date = None
+        streak_counter = 0
+
+        current_day = daily_contributions.pop(0)
+        # If the user is currently on a streak then find out when the streak started.
+        if current_day[1] > 0:
+            to_date = current_day[0]
+            streak_counter += 1
+            for day in daily_contributions:
+                if day[1] > 0:
+                    streak_counter += 1
+                else:
+                    from_date = day[0] + timedelta(days=1)
+                    break
+
+        return streak_counter, from_date, to_date
 
     def longest_streak(self):
         """
@@ -44,4 +65,5 @@ class Contributions:
 
 
 test = Contributions("cgodiksen")
-print(test.daily_contributions())
+daily = test.daily_contributions()
+print(test.current_streak(daily))
