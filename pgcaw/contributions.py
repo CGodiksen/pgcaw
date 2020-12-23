@@ -17,7 +17,7 @@ class Contributions:
         title = self.contributions_soup.find("h2").text
 
         # Extracting the number from the title.
-        return int(title.strip().split("contributions")[0].strip().replace(",", ""))
+        return int(title.strip().split("contribution")[0].strip().replace(",", ""))
 
     def daily(self):
         """

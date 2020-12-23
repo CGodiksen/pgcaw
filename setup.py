@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pgcaw",
-    version="1.0.0",
+    version="1.0.1",
     author="Christian Godiksen",
     author_email="christian.godiksen55@gmail.com",
     description="PGCAW is a very simple API wrapper for the github contributions calendar.",
