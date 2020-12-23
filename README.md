@@ -32,3 +32,5 @@ The class also contains some utility methods used to extract further information
 (105, datetime.date(2020, 8, 10), datetime.date(2020, 11, 23))
 ```
 Note here that both `current_streak()` and `longest_streak()` returns a tuple with the format `(streak_length, from_date, to_date)`.
+If the given user is not currently on a streak then `current_streak()` will return `(0, None, None)`.
+The same applies for `longest_streak()` if the user has not made any contributions.
