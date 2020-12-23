@@ -38,18 +38,18 @@ class Contributions:
         The output is a three-tuple with the format (streak_length, from, to). If the user is not on a streak then
         from and to will be None.
         """
-        list.reverse(daily_contributions)
+        reversed_daily_contributions = daily_contributions[::-1]
 
         to_date = None
         from_date = None
         streak_counter = 0
 
-        current_day = daily_contributions.pop(0)
+        current_day = reversed_daily_contributions.pop(0)
         # If the user is currently on a streak then find out when the streak started.
         if current_day[1] > 0:
             to_date = current_day[0]
             streak_counter += 1
-            for day in daily_contributions:
+            for day in reversed_daily_contributions:
                 if day[1] > 0:
                     streak_counter += 1
                 else:
