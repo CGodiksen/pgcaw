@@ -3,7 +3,7 @@ PGCAW is a very simple API wrapper for the github contributions calendar. The wr
 such as total contributions in the last year and daily contribution numbers. 
 
 ## Installation
-The recommended way to install PGCAW is using pip.
+The recommended way to install [PGCAW](https://pypi.org/project/pgcaw/) is using pip.
 ```
 pip install pgcaw
 ```

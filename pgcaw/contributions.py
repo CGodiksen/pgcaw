@@ -91,4 +91,4 @@ class Contributions:
             streaks.append((streak_counter, from_date, datetime.today().date()))
 
         # Return the longest streak, if any exist.
-        return max(streaks, key=itemgetter(0))
+        return max(streaks, key=itemgetter(0)) if streaks else (0, None, None)
