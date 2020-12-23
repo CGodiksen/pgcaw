@@ -92,8 +92,3 @@ class Contributions:
 
         # Return the longest streak, if any exist.
         return max(streaks, key=itemgetter(0))
-
-
-test = Contributions("CGodiksen")
-daily = test.daily_contributions()
-print(test.longest_streak(daily))
