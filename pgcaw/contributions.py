@@ -11,7 +11,7 @@ class Contributions:
         r = requests.get(url)
         self.contributions_soup = BeautifulSoup(r.text, "html.parser")
 
-    def total_contributions(self):
+    def total(self):
         """Return the total contributions in the last year."""
         # Find the h2 title text that contains the total contributions.
         title = self.contributions_soup.find("h2").text
@@ -19,7 +19,7 @@ class Contributions:
         # Extracting the number from the title.
         return int(title.strip().split("contributions")[0].strip().replace(",", ""))
 
-    def daily_contributions(self):
+    def daily(self):
         """
         Return a list of tuples, each with the format (date, number_contributions_on_date). The list has an element
         for each day in the last year.
@@ -94,6 +94,6 @@ class Contributions:
         return max(streaks, key=itemgetter(0))
 
 
-test = Contributions("cgodiksen")
+test = Contributions("CGodiksen")
 daily = test.daily_contributions()
 print(test.longest_streak(daily))
